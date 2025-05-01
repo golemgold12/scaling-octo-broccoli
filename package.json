@@ -1,0 +1,25 @@
+{
+  "name": "scaling-octo-broccoli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/golemgold12/scaling-octo-broccoli.git"
+  },
+  "author": "larsenFreund",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/golemgold12/scaling-octo-broccoli/issues"
+  },
+  "homepage": "https://github.com/golemgold12/scaling-octo-broccoli#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "forever": "^1.0.1",
+    "mysql": "^2.18.1"
+  }
+}
