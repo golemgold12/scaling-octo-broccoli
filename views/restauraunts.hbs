@@ -1,0 +1,112 @@
+
+
+
+  <header>
+    <h1>Restauraunts</h1>
+
+
+
+    <nav>
+      <a href="/index">main</a>
+      <a href="/restauraunts">restauraunts</a>
+      <a href="/about">about</a>
+
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section>
+
+      <h3>Restaurants</h3>
+
+      <article>
+        Listed below are Restaurants within a 5 mile radius.
+
+      </article>
+
+      <article>
+
+
+        <table id="restarTable">
+          <tr id="restarTableHeadings">
+          
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Open?</th>
+            <th>Rating?</th>
+            <th>Reviews</th>
+            <th>ADMIN CONTROLS</th>
+
+          </tr>
+          {{#each data}}
+          <tr data-value={{this.restaurant_Id}}>
+            <td>{{this.restaurant_Name}}</td>
+            <td>{{this.phone}}</td>
+            <td>{{this.is_Open}}</td>
+
+            <td>OVERALL RATING: {{this.avg_Rating}}</td>
+            <td><a href="/reviewPage/{{this.restaurant_Id}}">View all Reviews</a></td>
+            <td><button onclick="deleteRestaRow({{this.restaurant_Id}})" , class="deleteData">Delete</button></td>
+
+          </tr>
+          {{/each}}
+        </table>
+      </article>
+
+
+
+
+
+
+    </section>
+    <h3>Admin Management</h3>
+
+    <section id = "newRestaurantEntry", action="submit">
+        <h3>Restaurants Entry Form</h3>
+        <form action="">
+            <fieldset>
+                <legend>ADMINS: add a new restauraunt here.
+                </legend>
+
+                
+                <div>
+                    <input type="text" name="restaurant_Name" id = "input-restaurant_Name" required>
+                    <label>Enter the name of the restauraunt</label>
+                </div>
+                
+                <div>
+                    <input type="text" name="phone" id = "input-phone" required>
+                    <label>Enter the phone number</label>
+                </div>
+                 <legend>Is this restauraunt open?</legend>
+                <div>
+                  <input type="radio" id="yesOpen" name="drone" value="1" checked>
+                  <label for="yesOpen">Yes</label>
+                </div>
+                <div>
+                  <input type="radio" id="noOpen" name="drone" value="0" checked>
+                  <label for="noOpen">No</label>
+                </div>
+
+
+                <input type="submit" value="Submit">
+
+
+            </fieldset>
+        </form>
+
+    </section>
+
+    <script src="/js/restaurauntsManager.js"></script>
+    <footer style="background-color:rgb(218, 63, 25);"> Larsen Freund, 2024</footer>
+
+  </main>
+
+
+
+
+
+
+

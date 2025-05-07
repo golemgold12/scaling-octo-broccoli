@@ -1,0 +1,100 @@
+
+
+
+  <header>
+    <h1>{{rName.restaurant_Name}}</h1>
+
+
+
+   <nav>
+      <a href="/index">main</a>
+      <a href="/restauraunts">restauraunts</a>
+      <a href="/about">about</a>
+
+    </nav>
+
+  </header>
+
+  <main>
+    
+    <section>
+        
+      <h3>Restaurants</h3>
+
+      <article>
+        Showing all reviews for restaurant {{rName.restaurant_Name}}
+        
+      </article>
+    
+      <article>
+      
+     
+        <table id = "reviewTable">
+          <tr id = "reviewTableHeadings">
+        
+
+            <th>Author</th>
+            <th>Desc</th>
+            <th>Rating</th>
+
+         
+          </tr>
+           {{#each review}}
+            <tr data-value={{this.review_Id}}>
+            <td>{{this.reviewer}}</td>
+            <td>{{this.comments}}</td>
+            <td>{{this.rating}} out of 5</td>
+            <td><button onclick="deleteReviewRow({{this.review_Id}})" , class="deleteData">Delete</button></td>
+
+            
+          </tr>
+          {{/each}}
+        </table> 
+      </article>
+    </section>
+
+    
+    <section id = "newReviewEntry", action="submit">
+        <h3>Review Entry Form</h3>
+        <form action="">
+            <fieldset>
+                <legend>Write a review
+                </legend>
+
+                <div>
+                  <input type="hidden" name="restaurant_Id" id="input-review_Place" value="{{rName.restaurant_Id}}">
+                  {{rName.restaurant_Id}}
+                </div>
+                <div>
+                    <input type="text" name="review_Name" id = "input-review_Name" required>
+                    <label>Enter the name of the reviewer</label>
+                </div>
+                
+                <div>
+                    <input type="text" name="rating" id = "input-rating" required>
+                    <label>Enter the rating out of 5</label>
+                </div>
+                <div>
+
+                  <textarea name="input-comments" id="input-comments"></textarea>
+                  <label>Type your comments here</label>
+                </div>
+                <input type="submit" value="Submit">
+
+
+            </fieldset>
+        </form>
+
+    </section>
+    <script src="/js/reviewManager.js"></script>
+    <footer style="background-color:rgb(218, 63, 25);"> Larsen Freund, 2024</footer>
+
+  </main>
+
+
+
+
+
+
+
+
