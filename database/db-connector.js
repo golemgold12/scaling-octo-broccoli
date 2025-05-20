@@ -16,3 +16,5 @@ var pool = mysql.createPool({
 // source ./database/OSUFoodData.sql;
 // source ./database/OSUFoodReview.sql;
 module.exports.pool = pool;
+
+//mysql -u cs361_freundl -h classmysql.engr.oregonstate.edu -p cs361_freundl

@@ -3,7 +3,7 @@
 
   <header>
     <h1>{{rName.restaurant_Name}}</h1>
-
+    <meta name="username" content={{username}}>
 
 
    <nav>
@@ -12,11 +12,12 @@
       <a href="/about">about</a>
 
     </nav>
+    <h2> Currently logged in as: {{username}}</h2>
 
   </header>
 
   <main>
-    
+    <p1 data-username="<%= username ? username : '' %>"></p1>
     <section>
         
       <h3>Restaurants</h3>
@@ -36,14 +37,14 @@
             <th>Author</th>
             <th>Desc</th>
             <th>Rating</th>
-
+            <th>Admin Options</th>
          
           </tr>
            {{#each review}}
             <tr data-value={{this.review_Id}}>
             <td>{{this.reviewer}}</td>
             <td>{{this.comments}}</td>
-            <td>{{this.rating}} out of 5</td>
+            <td>{{this.rating}} out of 10</td>
             <td><button onclick="deleteReviewRow({{this.review_Id}})" , class="deleteData">Delete</button></td>
 
             
@@ -53,9 +54,9 @@
       </article>
     </section>
 
-    
+    <h3 id = "ReviewEntryTitle">Review Entry Form</h3>
+
     <section id = "newReviewEntry", action="submit">
-        <h3>Review Entry Form</h3>
         <form action="">
             <fieldset>
                 <legend>Write a review
@@ -63,7 +64,7 @@
 
                 <div>
                   <input type="hidden" name="restaurant_Id" id="input-review_Place" value="{{rName.restaurant_Id}}">
-                  {{rName.restaurant_Id}}
+                 
                 </div>
                 <div>
                     <input type="text" name="review_Name" id = "input-review_Name" required>
@@ -72,8 +73,9 @@
                 
                 <div>
                     <input type="text" name="rating" id = "input-rating" required>
-                    <label>Enter the rating out of 5</label>
+                    <label>Enter the rating out of 10</label>
                 </div>
+               
                 <div>
 
                   <textarea name="input-comments" id="input-comments"></textarea>

@@ -1,112 +1,161 @@
+<header>
+  <h1>Restauraunts</h1>
+
+  <h2> Currently logged in as: {{username}}</h2>
+
+  <nav>
+    <a href="/index">main</a>
+    <a href="/restauraunts">restauraunts</a>
+    <a href="/about">about</a>
+
+  </nav>
+
+</header>
+
+<main>
+
+  <section>
+
+    <h3>Restaurants</h3>
+
+    <article>
+      Listed below are Restaurants within a 5 mile radius.
+
+    </article>
+
+    <article>
+
+      <table id="restarTable" ,style="float: left">
+        <tr id="restarTableHeadings">
+
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Food Type</th>
+          <th>Open From </th>
+          <th>Open?</th>
+          <th>Rating?</th>
+          <th>Reviews</th>
+          <th>ADMIN CONTROLS</th>
+
+        </tr>
+        {{#each data}}
+        <tr data-value={{this.restaurant_Id}}>
+          <td>{{this.restaurant_Name}}</td>
+          <td>{{this.phone}}</td>
+          <td>{{this.foodType}}</td>
+          <td>Open from {{this.openHour}} to {{this.closeHour}}</td>
+          <td>{{this.is_Open}}</td>
+          <td>OVERALL RATING: {{this.avg_Rating}}</td>
+          <td><a href="/reviewPage/{{this.restaurant_Id}}">View all Reviews</a></td>
+          <td><button onclick="deleteRestaRow({{this.restaurant_Id}})" , class="deleteData">Delete</button></td>
+
+        </tr>
+        {{/each}}
+      </table>
+      <table>
+        <tr id="RatingGuide">
+          <th>Rating Guide</th>
+          <th>Should be...</th>
+        </tr>
+        <tr>
+          <th>10</th>
+          <th>Greatest thing in your life</th>
+        </tr>
+        <tr>
+          <th>9</th>
+          <th>Really Great</th>
+        </tr>
+        <tr>
+          <th>8</th>
+          <th>Great</th>
+        </tr>
+        <tr>
+          <th>7</th>
+          <th>Good</th>
+        </tr>
+        <tr>
+          <th>6</th>
+          <th>Alright I guess</th>
+        </tr>
+        <tr>
+          <th>5</th>
+          <th>Below average tbh</th>
+        </tr>
+        <tr>
+          <th>4</th>
+          <th>There are better options why this</th>
+        </tr>
+        <tr>
+          <th>3</th>
+          <th>Actually just bad</th>
+        </tr>
+        <tr>
+          <th>2</th>
+          <th>REALLY bad</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>godawful</th>
+        </tr>
+      </table>
 
 
-
-  <header>
-    <h1>Restauraunts</h1>
-
+    </article>
+  </section>
 
 
-    <nav>
-      <a href="/index">main</a>
-      <a href="/restauraunts">restauraunts</a>
-      <a href="/about">about</a>
+  <h3>Admin Management</h3>
 
-    </nav>
-
-  </header>
-
-  <main>
-
-    <section>
-
-      <h3>Restaurants</h3>
-
-      <article>
-        Listed below are Restaurants within a 5 mile radius.
-
-      </article>
-
-      <article>
+  <section id="newRestaurantEntry" , action="submit">
+    <h3>Restaurants Entry Form</h3>
+    <form action="">
+      <fieldset>
+        <legend>ADMINS: add a new restauraunt here.
+        </legend>
 
 
-        <table id="restarTable">
-          <tr id="restarTableHeadings">
-          
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Open?</th>
-            <th>Rating?</th>
-            <th>Reviews</th>
-            <th>ADMIN CONTROLS</th>
+        <div>
+          <input type="text" name="restaurant_Name" id="input-restaurant_Name" required>
+          <label>Enter the name of the restauraunt</label>
+        </div>
 
-          </tr>
-          {{#each data}}
-          <tr data-value={{this.restaurant_Id}}>
-            <td>{{this.restaurant_Name}}</td>
-            <td>{{this.phone}}</td>
-            <td>{{this.is_Open}}</td>
+        <div>
+          <input type="text" name="phone" id="input-phone" required>
+          <label>Enter the phone number</label>
+        </div>
+        <div>
+          <input type="text" name="foodType" id="input-foodType" required>
+          <label>What type of food?</label>
+        </div>
+        <div>
+          <input type="text" name="openTime" id="input-open" required>
+          <label>When is it open</label>
+        </div>
 
-            <td>OVERALL RATING: {{this.avg_Rating}}</td>
-            <td><a href="/reviewPage/{{this.restaurant_Id}}">View all Reviews</a></td>
-            <td><button onclick="deleteRestaRow({{this.restaurant_Id}})" , class="deleteData">Delete</button></td>
-
-          </tr>
-          {{/each}}
-        </table>
-      </article>
-
-
-
-
-
-
-    </section>
-    <h3>Admin Management</h3>
-
-    <section id = "newRestaurantEntry", action="submit">
-        <h3>Restaurants Entry Form</h3>
-        <form action="">
-            <fieldset>
-                <legend>ADMINS: add a new restauraunt here.
-                </legend>
-
-                
-                <div>
-                    <input type="text" name="restaurant_Name" id = "input-restaurant_Name" required>
-                    <label>Enter the name of the restauraunt</label>
-                </div>
-                
-                <div>
-                    <input type="text" name="phone" id = "input-phone" required>
-                    <label>Enter the phone number</label>
-                </div>
-                 <legend>Is this restauraunt open?</legend>
-                <div>
-                  <input type="radio" id="yesOpen" name="drone" value="1" checked>
-                  <label for="yesOpen">Yes</label>
-                </div>
-                <div>
-                  <input type="radio" id="noOpen" name="drone" value="0" checked>
-                  <label for="noOpen">No</label>
-                </div>
+        <div>
+          <input type="text" name="closeTime" id="input-closed" required>
+          <label>When is it closed</label>
+        </div>
+        <legend>Is this restauraunt open?</legend>
+        <div>
+          <input type="radio" id="yesOpen" name="drone" value="1" checked>
+          <label for="yesOpen">Yes</label>
+        </div>
+        <div>
+          <input type="radio" id="noOpen" name="drone" value="0" checked>
+          <label for="noOpen">No</label>
+        </div>
 
 
-                <input type="submit" value="Submit">
+        <input type="submit" value="Submit">
 
 
-            </fieldset>
-        </form>
+      </fieldset>
+    </form>
 
-    </section>
+  </section>
 
-    <script src="/js/restaurauntsManager.js"></script>
-    <footer style="background-color:rgb(218, 63, 25);"> Larsen Freund, 2024</footer>
+  <script src="/js/restaurauntsManager.js"></script>
+  <footer style="background-color:rgb(218, 63, 25);"> Larsen Freund, 2024</footer>
 
-  </main>
-
-
-
-
-
-
-
+</main>

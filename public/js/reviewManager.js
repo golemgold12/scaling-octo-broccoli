@@ -1,14 +1,21 @@
 let reviewAddForm = document.getElementById('newReviewEntry');
 let canAdd = true; // probably not very secure
-
+let reviewname;
 console.log("Found me");
 // Modify the objects we need
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
     // set edit to invisible
+    reviewname = document.querySelector('meta[name="username"]').getAttribute('content');
+    console.log(reviewname);
+    if(!reviewname){
+        let statusForm = document.getElementById("ReviewEntryTitle");
+        statusForm.innerHTML = "Please log in on the index page before posting a review."
+        reviewAddForm.hidden = true;
 
-
+    }
+    
 });
 reviewAddForm.addEventListener("submit", function (e) {
     if (canAdd) {
@@ -27,6 +34,7 @@ reviewAddForm.addEventListener("submit", function (e) {
         // Put our data we want to send in a javascript object
         let data = {
             restaurant_Id: inputRestaID.value,
+            user: reviewname,
             rating: inputRating.value,
             reviewer: inputName.value,
             comments: inputComments.value
@@ -109,7 +117,7 @@ function addReviewRowToTable(data) {
     newRow.innerHTML = `
     <td>${finalRow.reviewer}</td>
     <td>${finalRow.comments}</td>
-    <td>${finalRow.rating} out of 5</td>
+    <td>${finalRow.rating} out of 10</td>
     <td><button onclick="deleteReviewRow({{this.review_Id}})" , class="deleteData">Delete</button></td>
         `
     // Add row to table

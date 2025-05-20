@@ -1,13 +1,55 @@
 <header>
-    <h1 style="text-align:center;"> OSU FOOD SHOW </h1>
-    <p>Still needs a bit of work...</p>
+  <h1 style="text-align:center;"> OSU FOOD SHOW 
+
+    <br>
+    <small>Reviews by college students, for college students.</small>
+  </h1>
+
+  <p>Still needs a bit of work...</p>
+
+  <nav>
+    <a href="/index">main</a>
+    <a href="/restauraunts">restauraunts</a>
+    <a href="/about">about</a>
+
+  </nav>
+   <h2 id = "LoginName"> Currently logged in as: {{username}}</h2>
 
 
-    <nav>
-      <a href="/index">main</a>
-      <a href="/restauraunts">restauraunts</a>
-      <a href="/about">about</a>
 
-    </nav>
 </header>
 
+
+<main>
+  REGISTER
+  <section id = "registerAcc">
+    <form action="">
+      <label>Enter Username:
+        <input type="text" name="user" id="input-registerUser" required>
+      </label>
+      <br>
+      <label>Enter Password:
+        <input type="text" name="passkey" id="input-registerpassKey" required>
+      </label>
+      <button type="submit">Register</button>
+
+    </form>
+  </section>
+  LOGIN
+
+   <section id = "loginAcc">
+
+    <form action="">
+      <label>Enter Username:
+        <input type="text" name="user" id="input-loginUser" required>
+      </label>
+      <br>
+      <label>Enter Password:
+        <input type="text" name="passkey" id="input-loginpassKey"required>
+      </label>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+  <script src="/js/indexPage.js"></script>
+
+</main>

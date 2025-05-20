@@ -15,17 +15,27 @@ restaAddForm.addEventListener("submit", function (e) {
         // Get form fields we need to get data from
         let inputName = document.getElementById("input-restaurant_Name");
         let inputPhone = document.getElementById("input-phone");
+        let inputFoodType = document.getElementById("input-foodType");
+
+        let inputOpens = document.getElementById("input-open");
+
+        let inputClosed = document.getElementById("input-closed");
+
         let inputIsOpen = 0;
         if (document.getElementById('yesOpen').checked == true) {
             inputIsOpen = 1;
         }
-    
+
 
         // Put our data we want to send in a javascript object
         let data = {
             restaurant_Name: inputName.value,
             phone: inputPhone.value,
-            is_Open: inputIsOpen,
+            foodType: inputFoodType.value,
+            inputOpens: inputOpens.value,
+            inputClosed: inputClosed.value,
+            is_Open: inputIsOpen
+
         }
         console.log(data);
         // Setup our AJAX request
@@ -45,6 +55,9 @@ restaAddForm.addEventListener("submit", function (e) {
                 inputRestaID.value = '';
                 inputName.value = '';
                 inputPhone.value = '';
+                inputOpens.value = '';
+                inputClosed.value = '';
+
                 canAdd = false;
             }
             else if (xhttp.readyState == 4 && xhttp.status != 200) {
@@ -66,7 +79,7 @@ function deleteRestaRow(restaurant_Id) {
         return
     }
     // Turn restaurant_Id ID into an object
-    let data = {restaurant_Id: restaurant_Id};
+    let data = { restaurant_Id: restaurant_Id };
     let xhttp = new XMLHttpRequest();
     xhttp.open("DELETE", "/delete-restaurant-ajax", true)
     xhttp.setRequestHeader("Content-type", "application/json")
@@ -79,15 +92,15 @@ function deleteRestaRow(restaurant_Id) {
             if (row) {
                 row.remove();
             }
-           
-        } 
+
+        }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error deleting the review");
         }
-       
+
     }
-     // Send the request and wait for response
-     xhttp.send(JSON.stringify(data))
+    // Send the request and wait for response
+    xhttp.send(JSON.stringify(data))
 }
 
 function addRestaRowToTable(data) {
@@ -102,6 +115,9 @@ function addRestaRowToTable(data) {
     newRow.innerHTML = `
     <td>${finalRow.restaurant_Name}</td>
     <td>${finalRow.phone}</td>
+    <td>${finalRow.foodType}</td>
+    <td>Open from${finalRow.openHour} to ${finalRow.closeHour}</td>
+
     <td>${finalRow.is_Open}</td>
         `
     // Add row to table

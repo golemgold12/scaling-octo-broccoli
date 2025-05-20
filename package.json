@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/golemgold12/scaling-octo-broccoli#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
-    "forever": "^1.0.1",
+    "express-session": "^1.18.1",
+    "forever": "^4.0.3",
+    "mongoose": "^8.15.0",
     "mysql": "^2.18.1"
   }
 }
